@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
+#include <string.h>
 
 #define SIZ 8
 int* getarray() {
@@ -41,6 +42,7 @@ int main(int argc, char** argv) {
     }
 #endif
 
+#if 0
 
     float d[SIZ][SIZ];
     for (int i=0; i<SIZ; i++) {
@@ -81,6 +83,28 @@ int main(int argc, char** argv) {
         int index = find_index_of_most_voted_member(plane1_vec_voting_L, 100);
         printf("end, %d\n", index);
     }
+
+#endif
+    {
+#define VERSION(arr3) (((uint32_t)arr3[0] << 24) | ((uint32_t)'.' << 16) | ((uint32_t)arr3[1] << 8) | ((uint32_t)arr3[2]))
+
+        char arr[9];
+        char vl[3] = {0x01, 0x02, 0x03};
+        char vr[3] = {0x04, 0x05, 0x06};
+        int ivl = VERSION(vl);
+        int ivr = VERSION(vr);
+        memcpy(arr, &ivl, 4);
+        arr[4] = ' ';
+        memcpy(arr+5, &ivr, 4);
+
+        for(int i=0; i<9; i++) {
+            printf("%d: 0x%02x\n", i, arr[i]);
+        }
+
+#undef VERSION
+    }
+
+
 
     return 0;
 }
