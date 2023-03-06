@@ -4,15 +4,19 @@
 
 
 int main(int argc, char** argv) {
-    unsigned char test[] = {0x01, 0x02};
-    unsigned short i;
-    memcpy(&i, test, 2);
+    unsigned char test[] = {0x00, 0x01};
+    unsigned short little, big;
+    printf("input: ");
+    for (int i=0; i<sizeof(test); i++) {
+        printf("%02x ", test[i]);
+    }
+    printf("\n");
 
-    printf("i=%x\n", i);
+    //little = *(unsigned short *) test;
+    memcpy(&little, test, 2);
+    big = htons(little);
 
-    unsigned short big = htons(i);
-    i = htons(i);
-    printf("big=%x, i=%x\n", big, i);
+    printf("little=%d(0x%04hx), big=%d(0x%04hx)\n", little, little, big, big);
 
     return 0;
 }
