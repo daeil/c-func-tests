@@ -9,7 +9,8 @@ AC_OUTPUT" > configure.ac
 
 
 # Create Makefile.am
-echo "bin_PROGRAMS = qsort_test
+echo "AUTOMAKE_OPTIONS = foreign
+bin_PROGRAMS = qsort_test
 qsort_test_SOURCES = qsort_test.c" > Makefile.am
 
 
@@ -18,6 +19,6 @@ qsort_test_SOURCES = qsort_test.c" > Makefile.am
 
 # autoconf
 
-# automake --add-missing --foreign
+# automake
 
 # ./configure && make
