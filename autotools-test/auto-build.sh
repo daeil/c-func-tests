@@ -14,11 +14,8 @@ bin_PROGRAMS = qsort_test
 qsort_test_SOURCES = qsort_test.c" > Makefile.am
 
 
+aclocal
+autoconf
+automake
 
-# aclocal
-
-# autoconf
-
-# automake
-
-# ./configure && make
+./configure && make
